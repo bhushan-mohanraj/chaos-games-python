@@ -21,9 +21,13 @@ def sin(x: decimal.Decimal) -> decimal.Decimal:
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
-        term = 2 * i + 1
+        term = decimal.Decimal(1)
 
-        _sin += (-1) ** i * x ** term / math.factorial(term)
+        term *= (-1) ** i
+        term *= x ** (2 * i + 1)
+        term /= math.factorial(2 * i + 1)
+
+        _sin += term 
 
     return _sin
 
@@ -40,8 +44,12 @@ def cos(x: decimal.Decimal) -> decimal.Decimal:
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
-        term = 2 * i
+        term = decimal.Decimal(1)
 
-        _cos += (-1) ** i * x ** term / math.factorial(term)
+        term *= (-1) ** i
+        term *= x ** (2 * i)
+        term /= math.factorial(2 * i)
+
+        _cos += term
 
     return _cos
