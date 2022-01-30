@@ -74,7 +74,7 @@ def cos(x: decimal.Decimal) -> decimal.Decimal:
         term = decimal.Decimal(1)
 
         term *= (-1) ** i
-        term *= x ** (2 * i)
+        term *= x ** (2 * i) if i > 0 else 1
         term /= math.factorial(2 * i)
 
         cos_ += term
