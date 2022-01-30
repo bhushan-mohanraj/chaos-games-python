@@ -32,6 +32,10 @@ def pi() -> decimal.Decimal:
     return pi_
 
 
+# A constant containing the value of pi.
+PI = pi()
+
+
 def sin(x: decimal.Decimal) -> decimal.Decimal:
     """
     Evaluate the sine of an angle (in radians)
