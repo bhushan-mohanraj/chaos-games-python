@@ -15,7 +15,7 @@ def pi() -> decimal.Decimal:
     using the Taylor series for the arcsine function.
     """
 
-    _pi = decimal.Decimal(0)
+    pi_ = decimal.Decimal(0)
 
     # The first 200 nonzero terms of the Taylor series.
     for i in range(200):
@@ -27,9 +27,9 @@ def pi() -> decimal.Decimal:
         term /= math.factorial(i) ** 2
         term /= 2 * i + 1
 
-        _pi += 6 * term
+        pi_ += 6 * term
 
-    return _pi
+    return pi_
 
 
 def sin(x: decimal.Decimal) -> decimal.Decimal:
@@ -40,7 +40,7 @@ def sin(x: decimal.Decimal) -> decimal.Decimal:
 
     assert isinstance(x, decimal.Decimal)
 
-    _sin = decimal.Decimal(0)
+    sin_ = decimal.Decimal(0)
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
@@ -50,9 +50,9 @@ def sin(x: decimal.Decimal) -> decimal.Decimal:
         term *= x ** (2 * i + 1)
         term /= math.factorial(2 * i + 1)
 
-        _sin += term
+        sin_ += term
 
-    return _sin
+    return sin_
 
 
 def cos(x: decimal.Decimal) -> decimal.Decimal:
@@ -63,7 +63,7 @@ def cos(x: decimal.Decimal) -> decimal.Decimal:
 
     assert isinstance(x, decimal.Decimal)
 
-    _cos = decimal.Decimal(0)
+    cos_ = decimal.Decimal(0)
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
@@ -73,6 +73,6 @@ def cos(x: decimal.Decimal) -> decimal.Decimal:
         term *= x ** (2 * i)
         term /= math.factorial(2 * i)
 
-        _cos += term
+        cos_ += term
 
-    return _cos
+    return cos_
