@@ -9,6 +9,29 @@ import decimal
 decimal.getcontext().prec = 100
 
 
+def pi() -> decimal.Decimal:
+    """
+    Evaluate the decimal value for pi
+    using the Taylor series for the arcsine function.
+    """
+
+    _pi = decimal.Decimal(0)
+
+    # The first 200 nonzero terms of the Taylor series.
+    for i in range(200):
+        term = decimal.Decimal(1)
+
+        term *= math.factorial(2 * i)
+        term *= decimal.Decimal(1 / 2) ** (2 * i + 1)
+        term /= 4 ** i
+        term /= math.factorial(i) ** 2
+        term /= 2 * i + 1
+
+        _pi += 6 * term
+
+    return _pi
+
+
 def sin(x: decimal.Decimal) -> decimal.Decimal:
     """
     Evaluate the sine of an angle (in radians)
@@ -27,7 +50,7 @@ def sin(x: decimal.Decimal) -> decimal.Decimal:
         term *= x ** (2 * i + 1)
         term /= math.factorial(2 * i + 1)
 
-        _sin += term 
+        _sin += term
 
     return _sin
 
