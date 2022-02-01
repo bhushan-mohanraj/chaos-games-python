@@ -1,2 +1,6 @@
+# Project
+matplotlib~=3.5.1
+
+# Development
 pylint
 black
