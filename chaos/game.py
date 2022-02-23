@@ -63,7 +63,7 @@ class Game:
 
         for modification in self.modifications:
             if hasattr(modification, "get_next_vertex_index"):
-                return modification.get_next_vertex_index(self)
+                return modification.get_next_vertex_index(self, selected_vertex_indexes)
 
         return random.randrange(len(self.get_vertexes()))
 
