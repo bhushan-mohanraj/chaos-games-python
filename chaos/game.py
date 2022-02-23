@@ -2,9 +2,11 @@
 A class that represents and runs chaos games.
 """
 
+import functools
 from decimal import Decimal as D
 
 import chaos.math
+import chaos.point
 
 
 class Game:
@@ -20,3 +22,24 @@ class Game:
 
     # The fraction of the distance to jump toward each vertex.
     factor = D(1) / D(2)
+
+    @functools.cache
+    def _get_vertexes(self) -> list[chaos.point.Point]:
+        """
+        Calculate the vertexes to jump toward.
+        By default, these are the initial polygon vertexes.
+        """
+
+        vertexes = []
+
+        for i in range(self.vertex_count):
+            angle = 2 * chaos.math.PI * i / self.vertex_count
+
+            vertex = chaos.point.Point(
+                chaos.math.cos(angle),
+                chaos.math.sin(angle),
+            )
+
+            vertexes.append(vertex)
+
+        return vertexes
