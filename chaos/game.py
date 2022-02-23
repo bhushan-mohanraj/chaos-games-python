@@ -2,7 +2,7 @@
 A class that represents and runs chaos games.
 """
 
-import decimal
+from decimal import Decimal as D
 
 import chaos.math
 
@@ -19,4 +19,4 @@ class ChaosGame:
     point_count = 1000
 
     # The fraction of the distance to jump to each vertex.
-    factor = 1 / 2
+    factor = D(1) / D(2)
