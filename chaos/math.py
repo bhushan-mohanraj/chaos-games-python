@@ -4,25 +4,26 @@ Math constants and functions for precise calculations.
 
 import math
 import decimal
+from decimal import Decimal as D
 
 # Set the decimal precision to 100 digits.
 decimal.getcontext().prec = 100
 
 
-def get_pi() -> decimal.Decimal:
+def get_pi() -> D:
     """
     Evaluate the decimal value for pi
     using the Taylor series for the arcsine function.
     """
 
-    pi_ = decimal.Decimal(0)
+    pi_ = D(0)
 
     # The first 200 nonzero terms of the Taylor series.
     for i in range(200):
-        term = decimal.Decimal(1)
+        term = D(1)
 
         term *= math.factorial(2 * i)
-        term *= decimal.Decimal(1 / 2) ** (2 * i + 1)
+        term *= D(1 / 2) ** (2 * i + 1)
         term /= 4**i
         term /= math.factorial(i) ** 2
         term /= 2 * i + 1
@@ -36,19 +37,19 @@ def get_pi() -> decimal.Decimal:
 PI = get_pi()
 
 
-def get_sin(x: decimal.Decimal) -> decimal.Decimal:
+def get_sin(x: D) -> D:
     """
     Evaluate the sine of an angle (in radians)
     using the Taylor series for the sine function.
     """
 
-    assert isinstance(x, decimal.Decimal)
+    assert isinstance(x, D)
 
-    sin_ = decimal.Decimal(0)
+    sin_ = D(0)
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
-        term = decimal.Decimal(1)
+        term = D(1)
 
         term *= (-1) ** i
         term *= x ** (2 * i + 1)
@@ -59,19 +60,19 @@ def get_sin(x: decimal.Decimal) -> decimal.Decimal:
     return sin_
 
 
-def get_cos(x: decimal.Decimal) -> decimal.Decimal:
+def get_cos(x: D) -> D:
     """
     Evaluate the cosine of an angle (in radians)
     using the Taylor series for the cosine function.
     """
 
-    assert isinstance(x, decimal.Decimal)
+    assert isinstance(x, D)
 
-    cos_ = decimal.Decimal(0)
+    cos_ = D(0)
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
-        term = decimal.Decimal(1)
+        term = D(1)
 
         term *= (-1) ** i
         term *= x ** (2 * i) if i > 0 else 1
