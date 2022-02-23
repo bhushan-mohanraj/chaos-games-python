@@ -16,7 +16,7 @@ def get_pi() -> D:
     using the Taylor series for the arcsine function.
     """
 
-    pi_ = D(0)
+    pi = D(0)
 
     # The first 200 nonzero terms of the Taylor series.
     for i in range(200):
@@ -28,9 +28,9 @@ def get_pi() -> D:
         term /= math.factorial(i) ** 2
         term /= 2 * i + 1
 
-        pi_ += 6 * term
+        pi += 6 * term
 
-    return pi_
+    return pi
 
 
 # A constant containing the value of pi.
@@ -45,7 +45,7 @@ def get_sin(x: D) -> D:
 
     assert isinstance(x, D)
 
-    sin_ = D(0)
+    sin = D(0)
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
@@ -55,9 +55,9 @@ def get_sin(x: D) -> D:
         term *= x ** (2 * i + 1)
         term /= math.factorial(2 * i + 1)
 
-        sin_ += term
+        sin += term
 
-    return sin_
+    return sin
 
 
 def get_cos(x: D) -> D:
@@ -68,7 +68,7 @@ def get_cos(x: D) -> D:
 
     assert isinstance(x, D)
 
-    cos_ = D(0)
+    cos = D(0)
 
     # The first 50 nonzero terms of the Taylor series.
     for i in range(50):
@@ -78,6 +78,6 @@ def get_cos(x: D) -> D:
         term *= x ** (2 * i) if i > 0 else 1
         term /= math.factorial(2 * i)
 
-        cos_ += term
+        cos += term
 
-    return cos_
+    return cos
