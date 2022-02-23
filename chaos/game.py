@@ -15,8 +15,8 @@ class ChaosGame:
     # The vertexes for the intial polygon.
     vertex_count = 3
 
-    # The points to generate by jumping to the vertexes.
+    # The points to generate by jumping toward the vertexes.
     point_count = 1000
 
-    # The fraction of the distance to jump to each vertex.
+    # The fraction of the distance to jump toward each vertex.
     factor = D(1) / D(2)
