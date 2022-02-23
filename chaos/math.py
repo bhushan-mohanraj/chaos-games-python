@@ -23,7 +23,7 @@ def pi() -> decimal.Decimal:
 
         term *= math.factorial(2 * i)
         term *= decimal.Decimal(1 / 2) ** (2 * i + 1)
-        term /= 4 ** i
+        term /= 4**i
         term /= math.factorial(i) ** 2
         term /= 2 * i + 1
 
