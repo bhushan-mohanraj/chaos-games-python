@@ -9,7 +9,7 @@ import decimal
 decimal.getcontext().prec = 100
 
 
-def pi() -> decimal.Decimal:
+def get_pi() -> decimal.Decimal:
     """
     Evaluate the decimal value for pi
     using the Taylor series for the arcsine function.
@@ -33,10 +33,10 @@ def pi() -> decimal.Decimal:
 
 
 # A constant containing the value of pi.
-PI = pi()
+PI = get_pi()
 
 
-def sin(x: decimal.Decimal) -> decimal.Decimal:
+def get_sin(x: decimal.Decimal) -> decimal.Decimal:
     """
     Evaluate the sine of an angle (in radians)
     using the Taylor series for the sine function.
@@ -59,7 +59,7 @@ def sin(x: decimal.Decimal) -> decimal.Decimal:
     return sin_
 
 
-def cos(x: decimal.Decimal) -> decimal.Decimal:
+def get_cos(x: decimal.Decimal) -> decimal.Decimal:
     """
     Evaluate the cosine of an angle (in radians)
     using the Taylor series for the cosine function.

@@ -39,8 +39,8 @@ class Game:
             angle = 2 * chaos.math.PI * i / self.vertex_count
 
             vertex = chaos.point.Point(
-                chaos.math.cos(angle),
-                chaos.math.sin(angle),
+                chaos.math.get_cos(angle),
+                chaos.math.get_sin(angle),
             )
 
             vertexes.append(vertex)
