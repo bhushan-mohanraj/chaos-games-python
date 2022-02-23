@@ -1,3 +1,7 @@
+"""
+Different examples of chaos games.
+"""
+
 from decimal import Decimal as D
 
 import chaos.game
