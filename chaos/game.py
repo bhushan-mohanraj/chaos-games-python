@@ -26,12 +26,20 @@ class Game:
     # The fraction of the distance to jump toward each vertex.
     factor = D(1) / D(2)
 
+    # The modification classes,
+    # which should override the vertex or next-vertex functions.
+    modifications: list[type] = []
+
     @functools.cache
     def get_vertexes(self) -> list[chaos.point.Point]:
         """
         Calculate the vertexes to jump toward.
         By default, these are the initial polygon vertexes.
         """
+
+        for modification in self.modifications:
+            if hasattr(modification, "get_vertexes"):
+                return modification.get_vertexes(self)
 
         vertexes = []
 
@@ -52,6 +60,10 @@ class Game:
         Return the index for the next vertex to jump toward,
         given the list containing the previous vertex indexes.
         """
+
+        for modification in self.modifications:
+            if hasattr(modification, "get_next_vertex_index"):
+                return modification.get_next_vertex_index(self)
 
         return random.randrange(len(self.get_vertexes()))
 
