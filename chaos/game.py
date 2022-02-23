@@ -52,3 +52,29 @@ class Game:
         """
 
         return random.randrange(len(self._get_vertexes()))
+
+    @functools.cache
+    def _get_points(self) -> list[chaos.point.Point]:
+        """
+        Generate the points by randomly jumping toward the vertexes
+        following the sequence specified by the next-index function.
+        """
+
+        points = []
+
+        # The initial point (the origin).
+        point = chaos.point.Point()
+
+        # The list of vertex indexes (beginning with the first vertex).
+        vertex_indexes = [0]
+
+        for _ in range(self.point_count):
+            points.append(point)
+
+            next_vertex = self._get_vertexes()[
+                self._get_next_vertex_index(vertex_indexes)
+            ]
+
+            point = point * (1 - self.factor) + next_vertex * self.factor
+
+        return points
