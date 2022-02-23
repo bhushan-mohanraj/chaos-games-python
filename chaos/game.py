@@ -6,6 +6,8 @@ import random
 import functools
 from decimal import Decimal as D
 
+import matplotlib.pyplot
+
 import chaos.math
 import chaos.point
 
@@ -78,3 +80,28 @@ class Game:
             point = point * (1 - self.factor) + next_vertex * self.factor
 
         return points
+
+    def plot(self) -> None:
+        """
+        Plot the points generated through the chaos game.
+        """
+
+        # Set the plot size.
+        matplotlib.pyplot.figure(figsize=(12, 12))
+
+        # Plot the points (ignoring the first few).
+        matplotlib.pyplot.scatter(
+            [float(point.x) for point in self._get_points()][10:],
+            [float(point.y) for point in self._get_points()][10:],
+            s=1,
+        )
+
+        # Style and save the plot.
+        # TODO: Use `matplotlib.rcParams` for styling.
+        matplotlib.pyplot.axis("off")
+
+        # TODO: Consider adding opacity to markers in the plot.
+        matplotlib.pyplot.savefig(
+            "game.png",
+            pad_inches=0,
+        )
