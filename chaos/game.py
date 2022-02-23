@@ -7,7 +7,7 @@ from decimal import Decimal as D
 import chaos.math
 
 
-class ChaosGame:
+class Game:
     """
     A chaos game.
     """
