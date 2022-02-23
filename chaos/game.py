@@ -2,6 +2,7 @@
 A class that represents and runs chaos games.
 """
 
+import random
 import functools
 from decimal import Decimal as D
 
@@ -43,3 +44,11 @@ class Game:
             vertexes.append(vertex)
 
         return vertexes
+
+    def _get_next_vertex_index(self, vertex_indexes: list[int]) -> int:
+        """
+        Return the index for the next vertex to jump toward,
+        given the list containing the previous vertex indexes.
+        """
+
+        return random.randrange(len(self._get_vertexes()))
