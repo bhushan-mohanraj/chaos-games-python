@@ -14,7 +14,7 @@ class VertexesModification(abc.ABC):
     """
 
     @abc.abstractmethod
-    def _get_vertexes(self):
+    def get_vertexes(self):
         pass
 
 
@@ -24,5 +24,5 @@ class NextVertexModification(abc.ABC):
     """
 
     @abc.abstractmethod
-    def _get_next_vertex_index(self, vertex_indexes: list[int]):
+    def get_next_vertex_index(self, selected_vertex_indexes: list[int]):
         pass

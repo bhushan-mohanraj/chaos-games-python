@@ -27,7 +27,7 @@ class Game:
     factor = D(1) / D(2)
 
     @functools.cache
-    def _get_vertexes(self) -> list[chaos.point.Point]:
+    def get_vertexes(self) -> list[chaos.point.Point]:
         """
         Calculate the vertexes to jump toward.
         By default, these are the initial polygon vertexes.
@@ -47,16 +47,16 @@ class Game:
 
         return vertexes
 
-    def _get_next_vertex_index(self, selected_vertex_indexes: list[int]) -> int:
+    def get_next_vertex_index(self, selected_vertex_indexes: list[int]) -> int:
         """
         Return the index for the next vertex to jump toward,
         given the list containing the previous vertex indexes.
         """
 
-        return random.randrange(len(self._get_vertexes()))
+        return random.randrange(len(self.get_vertexes()))
 
     @functools.cache
-    def _get_points(self) -> list[chaos.point.Point]:
+    def get_points(self) -> list[chaos.point.Point]:
         """
         Generate the points by randomly jumping toward the vertexes
         following the sequence specified by the next-index function.
@@ -73,10 +73,10 @@ class Game:
         for _ in range(self.point_count):
             points.append(point)
 
-            next_vertex_index = self._get_next_vertex_index(selected_vertex_indexes)
+            next_vertex_index = self.get_next_vertex_index(selected_vertex_indexes)
             selected_vertex_indexes.append(next_vertex_index)
 
-            next_vertex = self._get_vertexes()[next_vertex_index]
+            next_vertex = self.get_vertexes()[next_vertex_index]
 
             point = point * (1 - self.factor) + next_vertex * self.factor
 
@@ -92,8 +92,8 @@ class Game:
 
         # Plot the points (ignoring the first few).
         matplotlib.pyplot.scatter(
-            [float(point.x) for point in self._get_points()][10:],
-            [float(point.y) for point in self._get_points()][10:],
+            [float(point.x) for point in self.get_points()][10:],
+            [float(point.y) for point in self.get_points()][10:],
             s=1,
         )
 
