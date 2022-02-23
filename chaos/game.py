@@ -47,7 +47,7 @@ class Game:
 
         return vertexes
 
-    def _get_next_vertex_index(self, vertex_indexes: list[int]) -> int:
+    def _get_next_vertex_index(self, selected_vertex_indexes: list[int]) -> int:
         """
         Return the index for the next vertex to jump toward,
         given the list containing the previous vertex indexes.
@@ -67,15 +67,16 @@ class Game:
         # The initial point (the origin).
         point = chaos.point.Point()
 
-        # The list of vertex indexes (beginning with the first vertex).
-        vertex_indexes = [0]
+        # The vertex indexes selected to jump toward.
+        selected_vertex_indexes = [0]
 
         for _ in range(self.point_count):
             points.append(point)
 
-            next_vertex = self._get_vertexes()[
-                self._get_next_vertex_index(vertex_indexes)
-            ]
+            next_vertex_index = self._get_next_vertex_index(selected_vertex_indexes)
+            selected_vertex_indexes.append(next_vertex_index)
+
+            next_vertex = self._get_vertexes()[next_vertex_index]
 
             point = point * (1 - self.factor) + next_vertex * self.factor
 
