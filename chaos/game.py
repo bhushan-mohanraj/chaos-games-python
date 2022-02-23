@@ -3,6 +3,7 @@ A class that represents and runs chaos games.
 """
 
 import random
+import pathlib
 import functools
 from decimal import Decimal as D
 
@@ -25,6 +26,9 @@ class Game:
 
     # The fraction of the distance to jump toward each vertex.
     factor = D(1) / D(2)
+
+    # The path where to save the image.
+    path: pathlib.Path = pathlib.Path("game.png")
 
     # The modification classes,
     # which should override the vertex or next-vertex functions.
@@ -115,6 +119,6 @@ class Game:
 
         # TODO: Consider adding opacity to markers in the plot.
         matplotlib.pyplot.savefig(
-            "game.png",
+            self.path,
             pad_inches=0,
         )
