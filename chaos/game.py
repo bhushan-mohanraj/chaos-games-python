@@ -11,6 +11,7 @@ import matplotlib.pyplot
 
 import chaos.math
 import chaos.point
+import chaos.modifications
 
 
 class Game:
@@ -42,7 +43,10 @@ class Game:
         """
 
         for modification in self.modifications:
-            if hasattr(modification, "get_vertexes"):
+            if issubclass(
+                modification,
+                chaos.modifications.VertexesModification,
+            ):
                 return modification.get_vertexes(self)
 
         vertexes = []
@@ -66,7 +70,10 @@ class Game:
         """
 
         for modification in self.modifications:
-            if hasattr(modification, "get_next_vertex_index"):
+            if issubclass(
+                modification,
+                chaos.modifications.NextVertexModification,
+            ):
                 return modification.get_next_vertex_index(self, selected_vertex_indexes)
 
         return random.randrange(len(self.get_vertexes()))
