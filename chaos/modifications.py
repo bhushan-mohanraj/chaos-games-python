@@ -53,3 +53,9 @@ class IgnoreTheCurrentVertex(NextVertexModification):
         vertex_indexes.remove(current_vertex_index)
 
         return random.choice(vertex_indexes)
+
+
+# Ignore exact vertex indexes (IgnoreSpecificVertexes).
+# Ignore vertex indexes some shift away (IgnoreShiftedVertexes).
+# Ignore vertex indexes from some time ago (IgnorePreviousVertexes),
+# so that IgnoreTheCurrentVertex subclasses IgnorePreviousVertexes.
