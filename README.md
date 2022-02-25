@@ -1,7 +1,8 @@
 # Chaos
 
 A package to run chaos games with Python.
-(See Wikipedia for information on chaos games.)
+Run `python -m examples` to produce plots
+for the example chaos games.
 
 # Development
 
