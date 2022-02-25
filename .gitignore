@@ -3,3 +3,6 @@ venv
 
 # Python Cache
 __pycache__
+
+# Images of Chaos Games
+*.png
