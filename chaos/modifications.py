@@ -6,8 +6,6 @@ import abc
 import random
 import functools
 
-import chaos.game
-
 
 class VertexesModification(abc.ABC):
     """
