@@ -33,7 +33,7 @@ class NextVertexModification(abc.ABC):
         pass
 
 
-class IgnoreTheCurrentVertex(NextVertexModification):
+class IgnoreTheCurrentVertexModification(NextVertexModification):
     """
     A modification which ignores the current vertex
     when selecting the next one.
