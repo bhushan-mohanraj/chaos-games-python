@@ -7,6 +7,26 @@ import random
 import functools
 
 
+class Modification(abc.ABC):
+    """
+    The base class for modification mixins.
+    """
+
+    def __init__(self):
+        """
+        Initialize the modification.
+
+        Subclasses should override this method
+        for implementing customization.
+        """
+
+    def get_vertexes(self):
+        raise NotImplementedError
+
+    def get_next_vertex_index(self, selected_vertex_indexes: list[int]):
+        raise NotImplementedError
+
+
 class VertexesModification(abc.ABC):
     """
     The base class for mixins which modify the vertexes.
