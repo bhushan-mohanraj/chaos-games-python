@@ -27,7 +27,7 @@ class Modification(abc.ABC):
         raise NotImplementedError
 
 
-class VertexesModification(abc.ABC):
+class VertexesModification(Modification):
     """
     The base class for mixins which modify the vertexes.
     """
@@ -36,17 +36,11 @@ class VertexesModification(abc.ABC):
     def get_vertexes(self):
         pass
 
-    def get_next_vertex_index(self, selected_vertex_indexes: list[int]):
-        raise NotImplementedError
 
-
-class NextVertexModification(abc.ABC):
+class NextVertexModification(Modification):
     """
     The base class for mixins which modify the next vertex.
     """
-
-    def get_vertexes(self):
-        raise NotImplementedError
 
     @abc.abstractmethod
     def get_next_vertex_index(self, selected_vertex_indexes: list[int]):
