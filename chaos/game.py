@@ -19,21 +19,27 @@ class Game:
     A chaos game.
     """
 
-    # The vertexes for the intial polygon.
-    vertex_count = 3
+    def __init__(
+        self,
+        # The vertexes for the intial polygon.
+        vertex_count: int = 3,
+        # The points to generate by jumping toward the vertexes.
+        point_count: int = 1000,
+        # The fraction of the distance to jump toward each vertex.
+        factor: D = D(1) / D(2),
+        # The modification classes,
+        # which should override the vertex or next-vertex functions.
+        modifications: list = [],
+    ):
+        """
+        Create and configure the chaos game.
+        """
 
-    # The points to generate by jumping toward the vertexes.
-    point_count = 1000
+        self.vertex_count = vertex_count
+        self.point_count = point_count
+        self.factor = factor
 
-    # The fraction of the distance to jump toward each vertex.
-    factor = D(1) / D(2)
-
-    # The path where to save the image.
-    path: pathlib.Path = pathlib.Path("game.png")
-
-    # The modification classes,
-    # which should override the vertex or next-vertex functions.
-    modifications: list[type] = []
+        self.modifications = modifications
 
     @functools.cache
     def get_vertexes(self) -> list[chaos.point.Point]:
@@ -105,7 +111,11 @@ class Game:
 
         return points
 
-    def plot(self) -> None:
+    def plot(
+        self,
+        # The path for saving the image.
+        path: pathlib.Path = pathlib.Path("game.png"),
+    ) -> None:
         """
         Plot the points generated through the chaos game.
         """
@@ -126,6 +136,6 @@ class Game:
 
         # TODO: Consider adding opacity to markers in the plot.
         matplotlib.pyplot.savefig(
-            self.path,
+            path,
             pad_inches=0,
         )
