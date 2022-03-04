@@ -6,11 +6,18 @@ import abc
 import random
 import functools
 
+import chaos.game
+
 
 class Modification(abc.ABC):
     """
     The base class for modification mixins.
     """
+
+    # The game which this modification modifies.
+    # The game class sets this attribute
+    # for each of its modifications.
+    game: chaos.game.Game
 
     def __init__(self):
         """
@@ -61,7 +68,7 @@ class IgnoreTheCurrentVertexModification(NextVertexModification):
 
         current_vertex_index = selected_vertex_indexes[-1]
 
-        vertex_indexes = list(range(len(self.get_vertexes())))
+        vertex_indexes = list(range(len(self.game.get_vertexes())))
         vertex_indexes.remove(current_vertex_index)
 
         return random.choice(vertex_indexes)

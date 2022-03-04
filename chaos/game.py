@@ -39,6 +39,9 @@ class Game:
         self.point_count = point_count
         self.factor = factor
 
+        for modification in modifications:
+            modification.game = self
+
         self.modifications = modifications
 
     @functools.cache
