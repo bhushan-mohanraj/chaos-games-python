@@ -27,12 +27,6 @@ class Modification(abc.ABC):
         for implementing customization.
         """
 
-    def get_vertexes(self):
-        raise NotImplementedError
-
-    def get_next_vertex_index(self, selected_vertex_indexes: list[int]):
-        raise NotImplementedError
-
 
 class VertexesModification(Modification):
     """
