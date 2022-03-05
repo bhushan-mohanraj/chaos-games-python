@@ -44,7 +44,7 @@ class NextVertexModification(Modification):
     """
 
     @abc.abstractmethod
-    def get_next_vertex_index(self, selected_vertex_indexes: list[int]):
+    def get_next_vertex_index(self):
         pass
 
 
@@ -54,13 +54,13 @@ class IgnoreTheCurrentVertexModification(NextVertexModification):
     when selecting the next one.
     """
 
-    def get_next_vertex_index(self, selected_vertex_indexes: list[int]) -> int:
+    def get_next_vertex_index(self) -> int:
         """
         Choose from the vertexes at random,
         but ignore the current vertex.
         """
 
-        current_vertex_index = selected_vertex_indexes[-1]
+        current_vertex_index = self.game.selected_vertex_indexes[-1]
 
         vertex_indexes = list(range(len(self.game.get_vertexes())))
         vertex_indexes.remove(current_vertex_index)

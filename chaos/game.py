@@ -19,6 +19,10 @@ class Game:
     A chaos game.
     """
 
+    # The selected vertex indexes over time.
+    # The initial vertex is the first from the list.
+    selected_vertex_indexes: list[int] = [0]
+
     def __init__(
         self,
         # The vertexes for the intial polygon.
@@ -72,7 +76,7 @@ class Game:
 
         return vertexes
 
-    def get_next_vertex_index(self, selected_vertex_indexes: list[int]) -> int:
+    def get_next_vertex_index(self) -> int:
         """
         Return the index for the next vertex to jump toward,
         given the list containing the previous vertex indexes.
@@ -83,7 +87,7 @@ class Game:
                 modification,
                 chaos.modifications.NextVertexModification,
             ):
-                return modification.get_next_vertex_index(self, selected_vertex_indexes)
+                return modification.get_next_vertex_index(self)
 
         return random.randrange(len(self.get_vertexes()))
 
@@ -99,14 +103,11 @@ class Game:
         # The initial point (the origin).
         point = chaos.point.Point()
 
-        # The vertex indexes selected to jump toward.
-        selected_vertex_indexes = [0]
-
         for _ in range(self.point_count):
             points.append(point)
 
-            next_vertex_index = self.get_next_vertex_index(selected_vertex_indexes)
-            selected_vertex_indexes.append(next_vertex_index)
+            next_vertex_index = self.get_next_vertex_index()
+            self.selected_vertex_indexes.append(next_vertex_index)
 
             next_vertex = self.get_vertexes()[next_vertex_index]
 
