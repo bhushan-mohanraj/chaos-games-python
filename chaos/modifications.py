@@ -15,8 +15,7 @@ class Modification(abc.ABC):
     """
 
     # The game which this modification modifies.
-    # The game class sets this attribute
-    # for each of its modifications.
+    # The game instance sets this attribute for each modification.
     game: chaos.game.Game
 
     def __init__(self):
