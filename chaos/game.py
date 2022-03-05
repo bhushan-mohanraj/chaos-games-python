@@ -43,6 +43,7 @@ class Game:
         self.point_count = point_count
         self.factor = factor
 
+        # Bind the modification instances to the game instance.
         for modification in modifications:
             modification.game = self
 
