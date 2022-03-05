@@ -6,8 +6,6 @@ import abc
 import random
 import functools
 
-import chaos.game
-
 
 class Modification(abc.ABC):
     """
@@ -16,7 +14,7 @@ class Modification(abc.ABC):
 
     # The game which this modification modifies.
     # The game instance sets this attribute for each modification.
-    game: chaos.game.Game
+    game = None
 
     def __init__(self):
         """
