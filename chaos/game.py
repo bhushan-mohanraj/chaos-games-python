@@ -57,7 +57,7 @@ class Game:
         """
 
         for modification in self.modifications:
-            if issubclass(
+            if isinstance(
                 modification,
                 chaos.modifications.VertexesModification,
             ):
@@ -84,7 +84,7 @@ class Game:
         """
 
         for modification in self.modifications:
-            if issubclass(
+            if isinstance(
                 modification,
                 chaos.modifications.NextVertexModification,
             ):
