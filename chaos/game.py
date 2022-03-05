@@ -32,7 +32,7 @@ class Game:
         # The fraction of the distance to jump toward each vertex.
         factor: D = D(1) / D(2),
         # The modification classes,
-        # which should override the vertex or next-vertex functions.
+        # which should override the vertex or next-vertex function.
         modifications: list = [],
     ):
         """
