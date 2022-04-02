@@ -8,14 +8,23 @@ import examples._triangle
 import examples._pentagon
 
 
-game_filenames = {
-    "triangle_sierpinski.png": examples._triangle.triangle_sierpinski_game,
-    "pentagon_sierpinski.png": examples._pentagon.pentagon_sierpinski_game,
+games = {
+    "triangle_sierpinski": examples._triangle.triangle_sierpinski_game,
+    "pentagon_sierpinski": examples._pentagon.pentagon_sierpinski_game,
 }
 
-# Run each game and produce the corresponding plot.
-for filename, game in game_filenames.items():
-    path = pathlib.Path(__file__).parent / filename
+for game_name, game in games.items():
+    # The PNG file to store the game plot.
+    game_path = pathlib.Path(__file__).parent / (game_name + ".png")
 
-    if not path.exists():
-        game.plot(path)
+    print(game_name, end=": ")
+
+    # Notify when the game has already been run.
+    if game_path.exists():
+        print("The image file exists. Delete the file to rerun the game.")
+
+    # Run the chaos game and save the plot.
+    else:
+        game.plot(game_path)
+
+        print("The game plot has been saved to the image file.")
