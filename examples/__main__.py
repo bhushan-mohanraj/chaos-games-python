@@ -4,13 +4,15 @@ Create and plot the examples of chaos games.
 
 import pathlib
 
-import examples._triangle
-import examples._pentagon
+from examples import (
+    _triangle,
+    _pentagon,
+)
 
 
 games = {
-    "triangle_sierpinski": examples._triangle.triangle_sierpinski_game,
-    "pentagon_sierpinski": examples._pentagon.pentagon_sierpinski_game,
+    "triangle_sierpinski": _triangle.triangle_sierpinski_game,
+    "pentagon_sierpinski": _pentagon.pentagon_sierpinski_game,
 }
 
 for game_name, game in games.items():
