@@ -15,4 +15,7 @@ game_filenames = {
 
 # Run each game and produce the corresponding plot.
 for filename, game in game_filenames.items():
-    game.plot(pathlib.Path(__file__).parent / filename)
+    path = pathlib.Path(__file__).parent / filename
+
+    if not path.exists():
+        game.plot(path)
