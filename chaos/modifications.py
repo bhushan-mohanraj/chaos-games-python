@@ -40,22 +40,41 @@ class NextVertexModification(Modification):
         pass
 
 
-class IgnoreTheCurrentVertexModification(NextVertexModification):
+class IgnorePreviousVertexesModification(NextVertexModification):
     """
-    A modification which ignores the current vertex
-    when selecting the next one.
+    A modification which ignores previous vertexes some number of steps ago.
     """
+
+    # The steps ago of the ignored vertexes, represented as negative integers.
+    # For example, if the list has negative one, the last vertex is ignored.
+    ignored_steps: list[int] = []
+
+    def __init__(self, ignored_steps: list[int]):
+        """
+        Customize the ignored steps.
+        """
+
+        self.ignored_steps = ignored_steps
 
     def get_next_vertex_index(self) -> int:
         """
         Choose from the vertexes at random,
-        but ignore the current vertex.
+        but ignore certain previous vertexes.
         """
 
-        current_vertex_index = self.game.selected_vertex_indexes[-1]
+        assert len(self.ignored_steps) < len(self.game.get_vertexes()), (
+            "The number of potentially-ignored vertexes"
+            " must be less than the number of total vertexes."
+        )
 
         vertex_indexes = list(range(len(self.game.get_vertexes())))
-        vertex_indexes.remove(current_vertex_index)
+
+        for ignored_step in self.ignored_steps:
+            if -len(self.game.selected_vertex_indexes) <= ignored_step < 0:
+                ignored_vertex_index = self.game.selected_vertex_indexes[ignored_step]
+
+                while ignored_vertex_index in vertex_indexes:
+                    vertex_indexes.remove(ignored_vertex_index)
 
         return random.choice(vertex_indexes)
 
