@@ -61,7 +61,7 @@ class Game:
                 modification,
                 chaos.modifications.VertexesModification,
             ):
-                return modification.get_vertexes(self)
+                return modification.get_vertexes()
 
         vertexes = []
 
@@ -88,7 +88,7 @@ class Game:
                 modification,
                 chaos.modifications.NextVertexModification,
             ):
-                return modification.get_next_vertex_index(self)
+                return modification.get_next_vertex_index()
 
         return random.randrange(len(self.get_vertexes()))
 
