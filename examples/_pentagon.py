@@ -1,5 +1,5 @@
 """
-A chaos game that creates the Sierpinski pentagon.
+Chaos games for pentagons.
 """
 
 from decimal import Decimal as D

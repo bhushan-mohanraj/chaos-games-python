@@ -1,5 +1,5 @@
 """
-A chaos game that creates the Sierpinski triangle.
+Chaos games for triangles.
 """
 
 from decimal import Decimal as D
