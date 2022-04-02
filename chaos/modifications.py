@@ -42,7 +42,7 @@ class NextVertexModification(Modification):
 
 class IgnorePreviousVertexesModification(NextVertexModification):
     """
-    A modification which ignores previous vertexes some number of steps ago.
+    A modification which ignores vertexes selected some number of steps ago.
     """
 
     # The steps ago of the ignored vertexes, represented as negative integers.
