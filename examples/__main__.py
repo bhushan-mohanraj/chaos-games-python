@@ -9,8 +9,8 @@ import examples._pentagon
 
 
 game_filenames = {
-    "triangle_sierpinski.png": examples._triangle.sierpinski_triangle_game,
-    "pentagon_sierpinski.png": examples._pentagon.sierpinski_pentagon_game,
+    "triangle_sierpinski.png": examples._triangle.triangle_sierpinski_game,
+    "pentagon_sierpinski.png": examples._pentagon.pentagon_sierpinski_game,
 }
 
 # Run each game and produce the corresponding plot.
