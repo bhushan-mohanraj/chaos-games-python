@@ -13,6 +13,7 @@ from examples import (
 games = {
     "triangle_sierpinski": _triangle.triangle_sierpinski_game,
     "pentagon_sierpinski": _pentagon.pentagon_sierpinski_game,
+    "pentagon_1": _pentagon.pentagon_1_game,
 }
 
 for game_name, game in games.items():
