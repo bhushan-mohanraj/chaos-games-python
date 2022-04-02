@@ -10,19 +10,14 @@ import functools
 class Modification(abc.ABC):
     """
     The base class for modification mixins.
+
+    Subclasses should override the initialization method
+    to implement customization of the modification.
     """
 
     # The game which this modification modifies.
     # The game instance sets this attribute for each modification.
     game = None
-
-    def __init__(self):
-        """
-        Initialize the modification.
-
-        Subclasses should override this method
-        for implementing customization.
-        """
 
 
 class VertexesModification(Modification):
