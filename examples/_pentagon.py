@@ -17,7 +17,7 @@ pentagon_sierpinski_game = chaos.game.Game(
 pentagon_1_game = chaos.game.Game(
     vertex_count=5,
     point_count=100_000,
-    factor=D(1 / 2),
+    factor=D(1) / D(2),
     modifications=[
         chaos.modifications.IgnorePreviousVertexesModification([-1]),
     ],
