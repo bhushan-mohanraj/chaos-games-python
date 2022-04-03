@@ -51,15 +51,14 @@ class IgnorePreviousVertexesModification(NextVertexModification):
 
     def __init__(self, ignored_steps: list[int]):
         """
-        Customize the ignored steps.
+        Customize the modification.
         """
 
         self.ignored_steps = ignored_steps
 
     def get_next_vertex_index(self) -> int:
         """
-        Choose from the vertexes at random,
-        but ignore certain previous vertexes.
+        Choose from the vertexes at random, but ignore some previous vertexes.
         """
 
         assert len(self.ignored_steps) < len(self.game.get_vertexes()), (
