@@ -6,12 +6,14 @@ import pathlib
 
 from examples import (
     _triangle,
+    _square,
     _pentagon,
 )
 
 
 games = {
     "triangle_sierpinski": _triangle.triangle_sierpinski_game,
+    "square_1": _square.square_1_game,
     "pentagon_sierpinski": _pentagon.pentagon_sierpinski_game,
     "pentagon_1": _pentagon.pentagon_1_game,
 }
