@@ -1,5 +1,5 @@
 """
-Create and plot the examples of chaos games.
+Create and plot examples of chaos games.
 """
 
 import pathlib
