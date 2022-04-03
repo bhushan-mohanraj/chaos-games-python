@@ -61,12 +61,12 @@ class IgnorePreviousVertexesModification(NextVertexModification):
         Choose from the vertexes at random, but ignore some previous vertexes.
         """
 
-        assert len(self.ignored_steps) < len(self.game.get_vertexes()), (
-            "The number of potentially-ignored vertexes"
-            " must be less than the number of total vertexes."
-        )
-
         vertex_indexes = list(range(len(self.game.get_vertexes())))
+
+        assert len(self.ignored_steps) < len(vertex_indexes), (
+            "The number of potential ignored vertexes"
+            " must be less than the total number of vertexes."
+        )
 
         for ignored_step in self.ignored_steps:
             if -len(self.game.selected_vertex_indexes) <= ignored_step < 0:
