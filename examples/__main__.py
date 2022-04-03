@@ -14,6 +14,8 @@ from examples import (
 games = {
     "triangle_sierpinski": _triangle.triangle_sierpinski_game,
     "square_1": _square.square_1_game,
+    "square_2": _square.square_2_game,
+    "square_3": _square.square_3_game,
     "pentagon_1": _pentagon.pentagon_1_game,
     "pentagon_sierpinski": _pentagon.pentagon_sierpinski_game,
 }
