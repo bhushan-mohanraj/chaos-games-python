@@ -79,4 +79,40 @@ class IgnorePreviousVertexesModification(NextVertexModification):
         return random.choice(vertex_indexes)
 
 
-# Ignore vertex indexes some shift away (IgnoreShiftedVertexes).
+class IgnoreShiftedVertexesModification(NextVertexModification):
+    """
+    A modification which ignores vertexes shifted from the current vertex.
+    """
+
+    # The shifts of the ignored vertexes, represented
+    # as positive (counterclockwise) or negative (clockwise) integers.
+    ignored_shifts: list[int] = []
+
+    def __init__(self, ignored_shifts: list[int]):
+        """
+        Customize the modification.
+        """
+
+        self.ignored_shifts = ignored_shifts
+
+    def get_next_vertex_index(self) -> int:
+        """
+        Choose from the vertexes at random, but ignore some shifted vertexes.
+        """
+
+        current_vertex_index = self.game.selected_vertex_indexes[-1]
+        vertex_indexes = list(range(len(self.game.get_vertexes())))
+
+        assert len(self.ignored_shifts) < len(vertex_indexes), (
+            "The number of ignored vertexes"
+            " must be less than the total number of vertexes."
+        )
+
+        for ignored_shift in self.ignored_shifts:
+            ignored_vertex_index = current_vertex_index + ignored_shift
+            ignored_vertex_index %= len(vertex_indexes)
+
+            while ignored_vertex_index in vertex_indexes:
+                vertex_indexes.remove(ignored_vertex_index)
+
+        return random.choice(vertex_indexes)
