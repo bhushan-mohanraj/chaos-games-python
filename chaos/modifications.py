@@ -100,7 +100,9 @@ class IgnoreShiftedVertexesModification(NextVertexModification):
         """
 
         current_vertex_index = self.game.selected_vertex_indexes[-1]
-        vertex_indexes = list(range(len(self.game.get_vertexes())))
+
+        vertex_count = len(self.game.get_vertexes())
+        vertex_indexes = list(range(vertex_count))
 
         assert len(self.ignored_shifts) < len(vertex_indexes), (
             "The number of ignored vertexes"
@@ -109,7 +111,7 @@ class IgnoreShiftedVertexesModification(NextVertexModification):
 
         for ignored_shift in self.ignored_shifts:
             ignored_vertex_index = current_vertex_index + ignored_shift
-            ignored_vertex_index %= len(vertex_indexes)
+            ignored_vertex_index %= vertex_count
 
             while ignored_vertex_index in vertex_indexes:
                 vertex_indexes.remove(ignored_vertex_index)
