@@ -27,15 +27,12 @@ POLYGONS = {
     12: "dodecagon",
 }
 
-# The examples games.
 GAMES = [
-    # Triangle games.
     chaos.game.Game(
         vertex_count=3,
         point_count=100_000,
         factor=D(1) / D(2),
     ),
-    # Square games.
     chaos.game.Game(
         vertex_count=4,
         point_count=100_000,
@@ -60,7 +57,6 @@ GAMES = [
             chaos.modifications.IgnoreShiftedVertexesModification([2]),
         ],
     ),
-    # Pentagon games.
     chaos.game.Game(
         vertex_count=5,
         point_count=100_000,
