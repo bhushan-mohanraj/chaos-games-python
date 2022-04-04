@@ -74,6 +74,14 @@ GAMES = [
             chaos.modifications.IgnorePreviousVertexesModification([-1]),
         ],
     ),
+    chaos.game.Game(
+        vertex_count=5,
+        point_count=100_000,
+        factor=D(1) / D(2),
+        modifications=[
+            chaos.modifications.IgnoreShiftedVertexesModification([-2, 2]),
+        ],
+    ),
 ]
 
 for game in GAMES:
