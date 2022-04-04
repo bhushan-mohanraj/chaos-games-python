@@ -115,3 +115,6 @@ class IgnoreShiftedVertexesModification(NextVertexModification):
                 vertex_indexes.remove(ignored_vertex_index)
 
         return random.choice(vertex_indexes)
+
+
+# TODO: Implement modifications that add the midpoints and center as vertexes.
