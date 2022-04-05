@@ -94,6 +94,11 @@ GAMES = [
             chaos.modifications.IgnoreShiftedVertexesModification([1, 2]),
         ],
     ),
+    chaos.game.Game(
+        vertex_count=6,
+        point_count=100_000,
+        factor=D(2) / D(3),
+    ),
 ]
 
 for game in GAMES:
