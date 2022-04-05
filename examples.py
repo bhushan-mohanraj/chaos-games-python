@@ -5,13 +5,19 @@ Create and plot examples of chaos games.
 import pathlib
 from decimal import Decimal as D
 
+import jinja2
+
 import chaos.game
 import chaos.modifications
 
 
-# The path for example images.
+# The path for example images and the examples README.
 EXAMPLES_PATH = pathlib.Path("examples")
 EXAMPLES_PATH.mkdir(parents=True, exist_ok=True)
+
+EXAMPLES_README_FILENAME = "README.md"
+EXAMPLES_README_TEMPLATE_FILENAME = "README.md.jinja"
+
 
 # Polygons according to vertexes.
 POLYGONS = {
@@ -26,6 +32,7 @@ POLYGONS = {
     11: "hendecagon",
     12: "dodecagon",
 }
+
 
 GAMES = [
     chaos.game.Game(
@@ -101,32 +108,64 @@ GAMES = [
     ),
 ]
 
-for game in GAMES:
-    # Games with the same number of vertexes in the original polygon.
+
+def get_game_name(game: chaos.game.Game) -> str:
+    """
+    Create a name (such as "triangle 1") for each game.
+    """
+
+    # All games with the same number of vertexes in their original polygons.
     similar_games = [
-        similar_game
-        for similar_game in GAMES
-        if similar_game.vertex_count == game.vertex_count
+        other_game
+        for other_game in GAMES
+        if other_game.vertex_count == game.vertex_count
     ]
 
-    # Construct the name, such as "triangle 1" for the first triangle game.
-    game_name = "{}_{}".format(
+    return "{}_{}".format(
         POLYGONS[game.vertex_count],
         similar_games.index(game) + 1,
     )
 
-    # The PNG file to store the game plot.
-    game_path = EXAMPLES_PATH / (game_name + ".png")
+
+def get_game_path(game: chaos.game.Game) -> pathlib.Path:
+    """
+    Create the path to store the plot for a game.
+    """
+
+    return EXAMPLES_PATH / (get_game_name(game) + ".png")
+
+
+for game in GAMES:
+    game_name = get_game_name(game)
+    game_path = get_game_path(game)
 
     print(game_name, end=": ")
 
-    # Notify when the game has already been run.
+    # The environment for Jinja templates.
+    template_environment = jinja2.Environment(
+        loader=jinja2.FileSystemLoader("examples"),
+        autoescape=jinja2.select_autoescape(),
+    )
+
+    # Render the README template with the games.
+    with (EXAMPLES_PATH / EXAMPLES_README_FILENAME).open("w") as file:
+        template = template_environment.get_template(EXAMPLES_README_TEMPLATE_FILENAME)
+
+        rendered_template = template.render(
+            {
+                "GAMES": GAMES,
+                "get_game_name": get_game_name,
+                "get_game_path": get_game_path,
+            }
+        )
+
+        file.write(rendered_template)
+
     if game_path.exists():
         print("The image file exists. Delete the file to rerun the game.")
 
         continue
 
-    # Run the game and save the plot.
     game.plot(game_path)
 
     print("The game plot has been saved to the image file.")

@@ -1,0 +1,14 @@
+# Examples
+
+Images labelled *cached* were generated previously
+and may not match (but should) the specifications listed.
+
+{% for game in GAMES %}
+## {{ get_game_name(game).replace("_", " ").title() }}
+
+{% if get_game_path(game).exists() %}*Cached*{% else %}*New*{% endif %} image.
+
+- Polygon Vertexes: {{ game.vertex_count }}.
+- Total Vertexes: {{ game.get_vertexes() | length }}.
+- Points: {{ game.point_count }}.
+{% endfor %}
