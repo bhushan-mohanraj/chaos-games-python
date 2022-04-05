@@ -1,5 +1,6 @@
 # Project
 matplotlib~=3.5.1
+Jinja2~=3.1.1
 
 # Development
 pylint
