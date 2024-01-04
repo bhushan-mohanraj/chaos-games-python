@@ -1,4 +1,4 @@
-# Chaos
+# Chaos Games
 
 A Python package to run [chaos games](https://en.wikipedia.org/wiki/Chaos_game).
 Run `python examples.py` to produce plots for the examples in `examples.py`.
